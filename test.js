@@ -1,47 +1,33 @@
-// Every and Then Some
-// Arrays also come with the standard methods `every` and `some`. 
-// Both take a predicate function that, when called with an array 
-// element as argument, returns true or false. 
+// Your Own Loop
+// Write a higher-order function loop that provides something like a 
+// for loop statement. 
 // 
-// Just like && returns a true value only when the expressions on 
-// both sides are true, every returns true only when the predicate 
-// returns true for all elements of the array. 
+// It should take a value, a test function, an update function, and a
+// body function. 
 // 
-// Similarly, some returns true as soon as the predicate returns
-// true for any of the elements. 
+// Each iteration, it should first run the test function on the 
+// current loop value and stop if that returns false. 
 // 
-// They do not process more elements than necessary — for example, 
-// if some finds that the predicate holds for the first element of 
-// the array, it will not look at the values after that.
+// It should then call the body function, giving it the current value, 
+// and finally call the update function to create a new value and 
+// start over from the beginning.
 // 
-// Write two functions, every and some, that behave like these 
-// methods, except that they take the array as their first argument 
-// rather than being a method.
+// When defining the function, you can use a regular loop to do the 
+// actual looping.
+// 
 // 
 // 
 // Your code here.
-function every(array, comparator) {
-  for (let i = 0; i < array.length; i++) {
-    if (!comparator(array[i])) return false;
+function loop(value, test, update, body) {
+  let next = value;
+
+  while(test(next)) {
+    body(next);
+    next = update(next);
   };
-
-  return true;
 };
-
-function some(array, comparator) {
-  for (let i = 0; i < array.length; i++) {
-    const result = comparator(array[i]);
-
-    if (result == true) return true;
-  };
-  return false;
-};
-
-console.log(every([NaN, NaN, NaN], isNaN));
-// → true
-console.log(every([NaN, NaN, 4], isNaN));
-// → false
-console.log(some([NaN, 3, 4], isNaN));
-// → true
-console.log(some([2, 3, 4], isNaN));
-// → false
+// 
+loop(3, n => n > 0, n => n - 1, console.log);
+// → 3
+// → 2
+// → 1
