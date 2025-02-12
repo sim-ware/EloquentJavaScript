@@ -14,6 +14,7 @@
 * each chapter will be summarized - it's eloquence converted to elegance (exaggerated simplicity), with accompanying notes & thoughts
 * each exercise will be presented within a code box, with accompanying notes
 * if anything beyond the Jupyter tooling is needed, accompanying instructions will be provided
+* there is currently a 4th Edition of this book (link!). To compensate for the differences, I will take notes from this book, do the exercises from both, and do the extra chapters from the 4th Edition.
 
 ## Tools
 * Deno
